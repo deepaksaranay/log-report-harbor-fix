@@ -1,0 +1,12 @@
+{
+    "task": {
+        "path": "C:\\Users\\Deepak\\AppData\\Local\\Temp\\harbor-check-v_gofixb\\check-log-report"
+    },
+    "trial_name": "check-log-report__coMRCLK",
+    "trials_dir": "jobs\\2026-07-18__15-29-34",
+    "agent": {
+        "name": "claude-code",
+        "model_name": "claude-sonnet-4-6"
+    },
+    "job_id": "cd96bbe0-5bc9-42fd-9d0b-97567795a7cc"
+}

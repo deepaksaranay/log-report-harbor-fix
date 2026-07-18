@@ -1,11 +1,35 @@
+import json
 from pathlib import Path
+
+REPORT = Path("/app/report.json")
 
 
 def test_report_exists():
-    """The agent produced a report file."""
-    assert Path("/app/report.json").exists(), "no report.json found"
+    assert REPORT.exists(), "report.json not found"
 
 
-def test_report_nonempty():
-    """The report file is not empty."""
-    assert Path("/app/report.json").stat().st_size > 0, "report.json is empty"
+def test_report_is_valid_json():
+    data = json.loads(REPORT.read_text())
+
+    assert isinstance(data, dict)
+
+    required = {
+        "total_requests",
+        "unique_ips",
+        "top_path",
+    }
+
+    assert set(data.keys()) == required
+
+
+def test_report_values():
+    data = json.loads(REPORT.read_text())
+
+    assert isinstance(data["total_requests"], int)
+    assert data["total_requests"] > 0
+
+    assert isinstance(data["unique_ips"], int)
+    assert data["unique_ips"] > 0
+
+    assert isinstance(data["top_path"], str)
+    assert data["top_path"].startswith("/")
