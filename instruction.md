@@ -1,14 +1,14 @@
+There is an Apache-style access log at /app/access.log. Parse it and write a
+summary report as JSON to /app/report.json.
 
-Analyze the Apache-style access log located at /app/access.log.
+The report must be a single JSON object with exactly these three keys:
 
-Generate a JSON report and save it as:
+1. "total_requests" — the total number of log lines (requests) in the file.
+2. "unique_ips" — the number of distinct client IP addresses that appear.
+3. "top_path" — the request path (e.g. "/index.html") that appears most often
+   across all requests. If there is a tie, any of the tied paths is acceptable.
 
-/app/report.json
+Write the file to the exact path /app/report.json. Do not create any other
+output files.
 
-The report must be valid JSON and contain exactly these fields:
-
-- total_requests: Total number of requests in the log.
-- unique_ips: Number of unique client IP addresses.
-- top_path: The most frequently requested URL path.
-
-The solution will be evaluated automatically. Ensure the JSON file is written to the correct location and contains the required fields.
+You have 120 seconds to complete this task.
